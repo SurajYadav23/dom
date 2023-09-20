@@ -26,16 +26,23 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
+      <li>Item 5</li>
     </ul>
    </div>
   </div>
-<script>
-    var list = document.getElementsByClassName('list-group-item');
-    console.log(list);
-    list[2].style.background = 'green';
-    var fulllist = document.getElementById('items');
-    fulllist.style.fontWeight = 'bold'
+  <script>
+    var lic = document.getElementsByClassName('list-group-item');
+    for(let i=0;i<lic.length; i++){
+        lic[i].style.background = 'yellow'
+    }
 
-</script>
+    var litag = document.getElementsByTagName('li');
+    for(let i=0;i<litag.length; i++){
+        litag[i].style.background = 'yellow'
+    }
+
+
+  </script>
+
 </body>
 </html>
