@@ -1,26 +1,44 @@
+const myForm = document.getElementById('myForm');
 
+function handleSubmit(event) {
+  event.preventDefault();
 
-  const myForm = document.getElementById('myForm');
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
 
-  
-  function handleSubmit(event) {
-    event.preventDefault(); 
+  const formdata = {
+    name: name,
+    email: email,
+    phone: phone,
+  };
+
+    saveform(formdata);
+    dispaydata();
+
+  console.log(localStorage);
+}
+
+function saveform(formdata) {
+  const storedformdata = JSON.parse(localStorage.getItem('form') || []);
+  storedformdata.push(formdata);
+  localStorage.setItem('form', JSON.stringify(storedformdata));
+}
+
+function displayData() {
+    dataList.innerHTML = ''; 
+
     
-    
-    const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      
-      const formdata = {
-          name: name,
-          email: email
+    const existingDataJSON = localStorage.getItem('form');
+    if (existingDataJSON) {
+      const existingData = JSON.parse(existingDataJSON);
+
+      existingData.forEach((formData, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `Entry ${index + 1}: Name - ${formData.name}, Email - ${formData.email}`;
+        dataList.appendChild(listItem);
+      });
     }
-     
-      const formdataJson = JSON.stringify(formdata);
-
-      localStorage.setItem('form', formdataJson);
-    
-      console.log(localStorage);
   }
 
-
-  myForm.addEventListener("submit", handleSubmit);
+myForm.addEventListener('submit', handleSubmit);
