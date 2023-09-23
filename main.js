@@ -37,6 +37,7 @@ function displayData() {
         const listItem = document.createElement('li');
         listItem.textContent = `Entry ${index + 1}: Name - ${formData.name}, Email - ${formData.email}:phone-${formData.phone}`;
           dataList.appendChild(listItem);
+          localStorage.removeItem('form');
           
       });
     }
