@@ -19,8 +19,7 @@
 
       localStorage.setItem('form', formdataJson);
     
-      console.log(name);
-      console.log(email);
+      console.log(localStorage);
   }
 
 
